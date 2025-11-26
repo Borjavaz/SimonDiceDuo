@@ -178,4 +178,74 @@ class VM : ViewModel() {
         }
     }
 
+    private suspend fun efectoCelebracion() {
+        repeat(2) {
+            for (i in 0..3) {
+                _colorActivo.value = i
+                _sonidoEvent.value = SonidoEvent.ColorSound(i)
+                delay(150)
+            }
+            _colorActivo.value = -1
+            delay(200)
+        }
+    }
+
+    private fun gameOver() {
+        viewModelScope.launch {
+            _gameState.value = GameState.GameOver(_ronda.value)
+            _text.value = "GAME OVER - RONDA ${_ronda.value}"
+            _botonesBrillantes.value = false
+
+            efectoGameOver()
+
+            delay(2000)
+            _text.value = "RÉCORD: ${_record.value} - PRESIONA START"
+        }
+    }
+
+    private suspend fun efectoGameOver() {
+        repeat(3) {
+            _colorActivo.value = 0
+            _sonidoEvent.value = SonidoEvent.ColorSound(0)
+            delay(400)
+            _colorActivo.value = -1
+            delay(400)
+        }
+    }
+
+    fun reiniciarJuego() {
+        if (_gameState.value != GameState.Inicio) {
+            viewModelScope.launch {
+                _gameState.value = GameState.GameOver(_ronda.value)
+                _text.value = "JUEGO REINICIADO"
+                _botonesBrillantes.value = false
+
+                // Efecto visual de reinicio
+                repeat(2) {
+                    for (i in 0..3) {
+                        _colorActivo.value = i
+                        _sonidoEvent.value = SonidoEvent.ColorSound(i)
+                        delay(150)
+                    }
+                    _colorActivo.value = -1
+                    delay(200)
+                }
+
+                _text.value = "RÉCORD: ${_record.value} - PRESIONA START"
+            }
+        }
+    }
+
+    fun clearSoundEvent() {
+        _sonidoEvent.value = null
+    }
+}
+
+/**
+ * Eventos de sonido para la UI
+ */
+sealed class SonidoEvent {
+    data class ColorSound(val colorInt: Int) : SonidoEvent()
+    object Error : SonidoEvent()
+    object Victory : SonidoEvent()
 }
