@@ -72,4 +72,21 @@ Aplicación Android del clásico juego Simón Dice donde el jugador debe memoriz
 5. **Game Over**: El juego termina al cometer un error
 6. **Récord**: Se guarda automáticamente la mejor puntuación
 
+## 📱 Funcionalidades Técnicas
+
+### Reactividad
+- Uso completo de `StateFlow` para todos los estados de UI
+- Patrón de eventos para comunicación unidireccional
+- Actualizaciones automáticas de la interfaz
+
+### Corrutinas
+- `viewModelScope` para operaciones asíncronas en el ViewModel
+- `LaunchedEffect` para efectos secundarios en la UI
+- `delay()` cancelable para temporizaciones
+
+### Modularidad
+- Componentes Compose reutilizables y testables
+- Separación clara de responsabilidades
+- Código limpio y mantenible
+
 
