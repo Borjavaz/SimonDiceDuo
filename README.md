@@ -34,3 +34,24 @@ Aplicación Android del clásico juego Simón Dice donde el jugador debe memoriz
 - **`SoundPlayer.kt`** - Gestor de audio con patrón Singleton
 - **Sistema de temas** - Tema personalizado con modo claro/oscuro
 
+## 🎮 Estados del Juego
+
+| Estado | Descripción | UI |
+|--------|-------------|-----|
+| `Inicio` | Estado inicial, esperando inicio | "PRESIONA START" |
+| `Preparando` | Preparando nueva partida | "PREPARADO..." |
+| `MostrandoSecuencia` | Simón muestra la secuencia | "OBSERVA LA SECUENCIA" |
+| `EsperandoJugador` | Turno del jugador | "TU TURNO - REPITE LA SECUENCIA" |
+| `ProcesandoInput` | Procesando input del jugador | "PROCESANDO" |
+| `SecuenciaCorrecta` | Secuencia completada correctamente | "¡BIEN! SIGUIENTE RONDA" |
+| `GameOver` | Fin del juego | "GAME OVER - RONDA X" |
+
+## 🎨 Sistema de Colores y Sonidos
+
+| Color | Tono Musical | Código | Color Visual |
+|-------|--------------|--------|--------------|
+| **Verde** | Do (Alto) | 1 | 🟢 |
+| **Rojo** | Mi (Medio-Alto) | 0 | 🔴 |
+| **Azul** | Sol (Medio-Bajo) | 2 | 🔵 |
+| **Amarillo** | Do' (Bajo) | 3 | 🟡 |
+
