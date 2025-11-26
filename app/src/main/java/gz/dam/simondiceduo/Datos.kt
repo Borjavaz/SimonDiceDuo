@@ -106,4 +106,32 @@ object Datos {
     }
 }
 
+/**
+ * Enum con los colores del juego y sus propiedades
+ */
+enum class Colores(val colorInt: Int, val nombre: String, val tono: String) {
+    ROJO(0, "ROJO", "Mi"),
+    VERDE(1, "VERDE", "Do"),
+    AZUL(2, "AZUL", "Sol"),
+    AMARILLO(3, "AMARILLO", "Do'")
+}
 
+// Función de extensión para obtener el color base (color CLARO/BRILLANTE, activo)
+fun Colores.baseColor(): Color {
+    return when (this) {
+        Colores.ROJO -> SimonRed
+        Colores.VERDE -> SimonGreen
+        Colores.AZUL -> SimonBlue
+        Colores.AMARILLO -> SimonYellow
+    }
+}
+
+// Función de extensión para obtener el color oscurecido (color OSCURO/INACTIVO)
+fun Colores.colorOscurecido(): Color {
+    return when (this) {
+        Colores.ROJO -> SimonRedDark
+        Colores.VERDE -> SimonGreenDark
+        Colores.AZUL -> SimonBlueDark
+        Colores.AMARILLO -> SimonYellowDark
+    }
+}
