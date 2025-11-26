@@ -46,4 +46,52 @@ class VM : ViewModel() {
     private val secuencia = mutableListOf<Int>()
     private val secuenciaUsuario = mutableListOf<Int>()
 
+    init {
+        // Inicializar el juego usando Datos
+        Datos.reiniciarJuego()
+    }
+
+    fun generaNumero(): Int = (0..3).random()
+
+    fun comenzarJuego() {
+        if (_gameState.value == GameState.Inicio || _gameState.value is GameState.GameOver) {
+            reiniciarDatos()
+            _gameState.value = GameState.Preparando
+            _text.value = "PREPARADO..."
+            _botonesBrillantes.value = false
+
+            viewModelScope.launch {
+                delay(1000)
+                comenzarNuevaRonda()
+            }
+        }
+    }
+
+    private fun reiniciarDatos() {
+        secuencia.clear()
+        secuenciaUsuario.clear()
+        _ronda.value = 0
+        _colorActivo.value = -1
+        _botonesBrillantes.value = false
+        Datos.reiniciarJuego()
+    }
+
+    private fun comenzarNuevaRonda() {
+        viewModelScope.launch {
+            _gameState.value = GameState.MostrandoSecuencia
+            _text.value = "OBSERVA LA SECUENCIA"
+            _botonesBrillantes.value = false
+
+            delay(500)
+
+            // Agregar nuevo color a la secuencia
+            val nuevoColor = generaNumero()
+            secuencia.add(nuevoColor)
+            _ronda.value = secuencia.size
+
+            // Mostrar secuencia completa
+            mostrarSecuenciaCompleta()
+        }
+    }
+
 }
