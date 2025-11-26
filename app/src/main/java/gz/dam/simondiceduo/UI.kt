@@ -105,3 +105,23 @@ fun HeaderInfo(
         }
     }
 }
+
+@Composable
+fun InfoBox(titulo: String, valor: String) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(text = titulo, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+        Box(
+            modifier = Modifier
+                .border(2.dp, Color.DarkGray)
+                .padding(horizontal = 12.dp, vertical = 4.dp)
+        ) {
+            Text(
+                text = valor,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+    }
+}
+
+
