@@ -94,4 +94,34 @@ class VM : ViewModel() {
         }
     }
 
+    private suspend fun mostrarSecuenciaCompleta() {
+        for ((index, colorInt) in secuencia.withIndex()) {
+            //ILUMINA Y DISPARA EVENTO DE SONIDO
+            _colorActivo.value = colorInt
+            _sonidoEvent.value = SonidoEvent.ColorSound(colorInt)
+            delay(velocidadMostrarColor)
+
+            // APAGA
+            _colorActivo.value = -1
+
+            //PAUSA (Tiempo de apagado mínimo)
+            delay(velocidadTiempoApagado)
+
+            // PAUSA ENTRE COLORES (Solo si no es el último)
+            if (index < secuencia.size - 1) {
+                delay(velocidadPausaEntreColores)
+            }
+        }
+
+        delay(500)
+        prepararTurnoJugador()
+    }
+
+    private fun prepararTurnoJugador() {
+        secuenciaUsuario.clear()
+        _gameState.value = GameState.EsperandoJugador
+        _text.value = "TU TURNO - REPITE LA SECUENCIA"
+        _botonesBrillantes.value = true
+    }
+
 }
