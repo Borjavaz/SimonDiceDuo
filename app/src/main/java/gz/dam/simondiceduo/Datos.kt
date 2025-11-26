@@ -5,16 +5,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
-import gz.dam.simondiceduo.ui.theme.SimonBlue
-import gz.dam.simondiceduo.ui.theme.SimonGreen
-import gz.dam.simondiceduo.ui.theme.SimonRed
-import gz.dam.simondiceduo.ui.theme.SimonYellow
+import gz.dam.pruebita.ui.theme.SimonBlue
+import gz.dam.pruebita.ui.theme.SimonGreen
+import gz.dam.pruebita.ui.theme.SimonRed
+import gz.dam.pruebita.ui.theme.SimonYellow
 
 // IMPORTACIONES REQUERIDAS DE TU ARCHIVO Color.kt
-import gz.dam.simondiceduo.ui.theme.SimonRedDark
-import gz.dam.simondiceduo.ui.theme.SimonGreenDark
-import gz.dam.simondiceduo.ui.theme.SimonBlueDark
-import gz.dam.simondiceduo.ui.theme.SimonYellowDark
+import gz.dam.pruebita.ui.theme.SimonRedDark
+import gz.dam.pruebita.ui.theme.SimonGreenDark
+import gz.dam.pruebita.ui.theme.SimonBlueDark
+import gz.dam.pruebita.ui.theme.SimonYellowDark
 
 /**
  * Clase sellada que representa todos los estados posibles del juego
@@ -79,4 +79,31 @@ object Datos {
     var secuencia = mutableListOf<Int>()
     var secuenciaUsuario = mutableListOf<Int>()
 
+    // FUNCIONES DE ACCESO CONTROLADO
+    fun updateRonda(value: Int) { ronda = value }
+    fun updateRecord(value: Int) { record = value }
+    fun updateGameState(value: GameState) { gameState = value }
+    fun updateText(value: String) { text = value }
+    fun updateMostrarSecuencia(value: Boolean) { mostrarSecuencia = value }
+    fun updateColorActivo(value: Int) { colorActivo = value }
+    fun updateBotonesBrillantes(value: Boolean) { botonesBrillantes = value }
+    fun updateJugando(value: Boolean) { jugando = value }
+
+    /**
+     * Reinicia el juego al estado inicial
+     */
+    fun reiniciarJuego() {
+        secuencia.clear()
+        secuenciaUsuario.clear()
+        updateRonda(0)
+        updateGameState(GameState.Inicio)
+        updateText("PRESIONA START")
+        updateMostrarSecuencia(false)
+        updateColorActivo(-1)
+        updateBotonesBrillantes(false)
+        updateJugando(false)
+        notifyObservers("GAME_RESET")
+    }
 }
+
+
