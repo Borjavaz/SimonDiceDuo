@@ -1,4 +1,3 @@
-
 # Simón Dice - Juego de Memoria 🎮
 
 ## 🎯 Objetivo del Juego
@@ -97,15 +96,42 @@ main (protegida)
 ├── feature_Borja # Lógica y estados  
 └── featureManu # Interfaz y componentes  
 
-Ejemplos de ejecucion del codigo:
+## 🎯 Comprobaciones y Análisis Visual
 
-<img width="406" height="849" alt="image" src="https://github.com/user-attachments/assets/3e791756-de80-4a58-8481-79252bf20ed7" />
+### Flujo de Juego Demostrado
 
-<img width="406" height="849" alt="image" src="https://github.com/user-attachments/assets/773192ca-51dc-4996-be46-23a2e575bca6" />
+### Imagen 1: Estado "Preparado" - Inicio del Juego
+<img width="406" height="849" alt="Secuencia Inicial" src="https://github.com/user-attachments/assets/3e791756-de80-4a58-8481-79252bf20ed7" />
 
-<img width="406" height="849" alt="image" src="https://github.com/user-attachments/assets/4ac15405-748b-46b7-b099-e0d2c82c4082" />
+**Análisis:**
+- **Estado activo**: `Preparado` - El juego muestra "PREPARADO..."
+- **Configuración inicial**: El sistema se prepara para generar la primera secuencia
+- **Ronda actual**: Ronda 1 (próxima a comenzar)
+- **Botones inactivos**: Todos los botones están en estado neutral
+- **Inicialización**: El juego está configurando los componentes para la primera ronda
 
-<img width="406" height="849" alt="image" src="https://github.com/user-attachments/assets/76d0379e-dd59-4832-abe1-df58f410be38" />
+### Imagen 2: Estado "MostrandoSecuencia" - Simón Muestra
+<img width="406" height="849" alt="Turno del Jugador" src="https://github.com/user-attachments/assets/4ac15405-748b-46b7-b099-e0d2c82c4082" />
 
+**Análisis:**
+- **Estado activo**: `MostrandoSecuencia` - Muestra "OBSERVA LA SECUENCIA"
+- **Turno de Simón**: El juego está mostrando la secuencia al jugador
+- **Botones bloqueados**: El usuario no puede interactuar durante esta fase
 
+### Imagen 3: Estado "EsperandoJugador" - Turno del Usuario  
+<img width="406" height="849" alt="Procesando Input" src="https://github.com/user-attachments/assets/76d0379e-dd59-4832-abe1-df58f410be38" />
 
+**Análisis:**
+- **Estado activo**: `EsperandoJugador` - Muestra "TU TURNO - REPITE LA SECUENCIA"
+- **Interactividad habilitada**: Los 4 botones de colores están disponibles para input del usuario
+- **Estado neutral**: Todos los botones muestran sus colores base sin iluminación
+- **Preparación para input**: La interfaz está lista para recibir la secuencia del jugador
+
+### Imagen 4: Estado "GameOver" - Fin del Juego
+<img width="406" height="849" alt="Game Over" src="https://github.com/user-attachments/assets/773192ca-51dc-4996-be46-23a2e575bca6" />
+
+**Análisis:**
+- **Estado final**: `GameOver` - Muestra claramente "GAME OVER - RONDA 1"
+- **Error detectado**: El jugador falló la secuencia en la primera ronda
+- **Feedback del resultado**: Indica que el juego terminó en la ronda 1
+- **Reinicio disponible**: El botón "START" está visible para comenzar una nueva partida
