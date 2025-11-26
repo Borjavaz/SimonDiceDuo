@@ -171,5 +171,37 @@ fun BotonesColores(
     }
 }
 
+@Composable
+fun BotonColor(
+    viewModel: VM,
+    color: Colores,
+    colorActivo: Int,
+    enabled: Boolean,
+    gameState: GameState
+) {
+    val estaActivo = colorActivo == color.colorInt
+
+    val colorBoton = when {
+        estaActivo -> color.baseColor()
+        enabled -> color.baseColor()
+        else -> color.colorOscurecido()
+    }
+
+    Button(
+        onClick = { viewModel.procesarClickUsuario(color.colorInt) },
+        enabled = enabled,
+        shape = CircleShape,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = colorBoton,
+            disabledContainerColor = colorBoton
+        ),
+        modifier = Modifier
+            .size(140.dp)
+            .border(4.dp, Color.Black, CircleShape)
+    ) {
+        // Botón sin contenido adicional
+    }
+}
+
 
 
