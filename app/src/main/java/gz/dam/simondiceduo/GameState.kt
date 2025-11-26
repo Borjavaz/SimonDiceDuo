@@ -10,5 +10,5 @@ sealed class GameState {
     object EsperandoJugador : GameState()
     object ProcesandoInput : GameState()
     object SecuenciaCorrecta : GameState()
-
+    data class GameOver(val rondaAlcanzada: Int) : GameState()
 }
