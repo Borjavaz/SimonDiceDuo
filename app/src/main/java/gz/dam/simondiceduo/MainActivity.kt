@@ -24,6 +24,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+
     override fun onDestroy() {
         super.onDestroy()
         SoundPlayer.getInstance(this).release()
