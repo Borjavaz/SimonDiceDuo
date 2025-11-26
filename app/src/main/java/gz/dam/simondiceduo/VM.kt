@@ -36,4 +36,14 @@ class VM : ViewModel() {
     private val _sonidoEvent = MutableStateFlow<SonidoEvent?>(null)
     val sonidoEvent: StateFlow<SonidoEvent?> = _sonidoEvent.asStateFlow()
 
+    // Velocidades para mejor visibilidad
+    private val velocidadMostrarColor = 800L
+    private val velocidadPausaEntreColores = 400L
+    private val velocidadTiempoApagado = 200L
+    private val velocidadPausaEntreRondas = 1200L
+
+    // Secuencias del juego
+    private val secuencia = mutableListOf<Int>()
+    private val secuenciaUsuario = mutableListOf<Int>()
+
 }
