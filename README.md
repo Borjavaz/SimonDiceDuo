@@ -55,3 +55,21 @@ Aplicación Android del clásico juego Simón Dice donde el jugador debe memoriz
 | **Azul** | Sol (Medio-Bajo) | 2 | 🔵 |
 | **Amarillo** | Do' (Bajo) | 3 | 🟡 |
 
+## 🚀 Instrucciones de Compilación
+
+### Ejecución
+1. Clona el repositorio
+2. Abre el proyecto en Android Studio
+3. Sincroniza las dependencias de Gradle
+4. Ejecuta en emulador o dispositivo físico (API 21+)
+
+## 🎯 Flujo del Juego
+
+1. **Inicio**: Presiona "START" para comenzar
+2. **Observación**: Mira y escucha la secuencia de colores  
+3. **Repetición**: Repite la secuencia en el mismo orden
+4. **Progresión**: Cada ronda añade un color nuevo a la secuencia
+5. **Game Over**: El juego termina al cometer un error
+6. **Récord**: Se guarda automáticamente la mejor puntuación
+
+
