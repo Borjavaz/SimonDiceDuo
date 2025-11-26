@@ -105,4 +105,7 @@ Ejemplos de ejecucion del codigo:
 
 <img width="406" height="849" alt="image" src="https://github.com/user-attachments/assets/4ac15405-748b-46b7-b099-e0d2c82c4082" />
 
+<img width="406" height="849" alt="image" src="https://github.com/user-attachments/assets/76d0379e-dd59-4832-abe1-df58f410be38" />
+
+
 
