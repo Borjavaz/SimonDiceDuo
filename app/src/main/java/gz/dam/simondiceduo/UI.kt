@@ -203,5 +203,29 @@ fun BotonColor(
     }
 }
 
+@Composable
+fun BotonControl(viewModel: VM, gameState: GameState) {
+    val textoBoton = when (gameState) {
+        is GameState.Inicio, is GameState.GameOver -> "START"
+        else -> "RESTART"
+    }
 
+    Button(
+        onClick = {
+            when (gameState) {
+                is GameState.Inicio, is GameState.GameOver -> viewModel.comenzarJuego()
+                else -> viewModel.reiniciarJuego()
+            }
+        },
+        modifier = Modifier
+            .width(200.dp)
+            .height(60.dp)
+    ) {
+        Text(
+            text = textoBoton,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold
+        )
+    }
+}
 
