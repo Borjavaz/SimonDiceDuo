@@ -89,4 +89,10 @@ Aplicación Android del clásico juego Simón Dice donde el jugador debe memoriz
 - Separación clara de responsabilidades
 - Código limpio y mantenible
 
+## 👥 Colaboración y Control de Versiones
 
+### Estructura de Ramas
+main (protegida)  
+└── development  
+├── feature_Borja # Lógica y estados  
+└── featureManu # Interfaz y componentes  
