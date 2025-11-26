@@ -123,5 +123,53 @@ fun InfoBox(titulo: String, valor: String) {
         }
     }
 }
+@Composable
+fun BotonesColores(
+    viewModel: VM,
+    colorActivo: Int,
+    botonesBrillantes: Boolean,
+    gameState: GameState
+) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Row {
+            BotonColor(
+                viewModel = viewModel,
+                color = Colores.ROJO,
+                colorActivo = colorActivo,
+                enabled = botonesBrillantes,
+                gameState = gameState
+            )
+            Spacer(modifier = Modifier.width(20.dp))
+            BotonColor(
+                viewModel = viewModel,
+                color = Colores.VERDE,
+                colorActivo = colorActivo,
+                enabled = botonesBrillantes,
+                gameState = gameState
+            )
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Row {
+            BotonColor(
+                viewModel = viewModel,
+                color = Colores.AMARILLO,
+                colorActivo = colorActivo,
+                enabled = botonesBrillantes,
+                gameState = gameState
+            )
+            Spacer(modifier = Modifier.width(20.dp))
+            BotonColor(
+                viewModel = viewModel,
+                color = Colores.AZUL,
+                colorActivo = colorActivo,
+                enabled = botonesBrillantes,
+                gameState = gameState
+            )
+        }
+    }
+}
+
 
 
