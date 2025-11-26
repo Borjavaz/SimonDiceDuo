@@ -124,4 +124,58 @@ class VM : ViewModel() {
         _botonesBrillantes.value = true
     }
 
+    fun procesarClickUsuario(colorInt: Int) {
+        if (_gameState.value != GameState.EsperandoJugador) return
+
+        viewModelScope.launch {
+            _gameState.value = GameState.ProcesandoInput
+            _botonesBrillantes.value = false
+
+            // ILUMINA Y DISPARA EVENTO DE SONIDO
+            _colorActivo.value = colorInt
+            _sonidoEvent.value = SonidoEvent.ColorSound(colorInt)
+            delay(400)
+            _colorActivo.value = -1
+
+            secuenciaUsuario.add(colorInt)
+            verificarSecuenciaUsuario()
+        }
+    }
+
+    private fun verificarSecuenciaUsuario() {
+        val indiceActual = secuenciaUsuario.size - 1
+
+        if (secuenciaUsuario[indiceActual] != secuencia[indiceActual]) {
+            _sonidoEvent.value = SonidoEvent.Error
+            gameOver()
+            return
+        }
+
+        if (secuenciaUsuario.size == secuencia.size) {
+            _sonidoEvent.value = SonidoEvent.Victory
+            secuenciaCorrecta()
+        } else {
+            _gameState.value = GameState.EsperandoJugador
+            _text.value = "CONTINÚA... ${secuenciaUsuario.size}/${secuencia.size}"
+            _botonesBrillantes.value = true
+        }
+    }
+
+    private fun secuenciaCorrecta() {
+        viewModelScope.launch {
+            _gameState.value = GameState.SecuenciaCorrecta
+            _text.value = "¡BIEN! SIGUIENTE RONDA"
+
+            if (_ronda.value > _record.value) {
+                _record.value = _ronda.value
+            }
+
+            efectoCelebracion()
+
+            delay(velocidadPausaEntreRondas)
+
+            comenzarNuevaRonda()
+        }
+    }
+
 }
