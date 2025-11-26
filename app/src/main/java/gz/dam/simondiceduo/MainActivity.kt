@@ -3,29 +3,45 @@ package gz.dam.simondiceduo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Surface
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import gz.dam.simondiceduo.ui.theme.SimonDiceTheme
+import androidx.compose.ui.tooling.preview.Preview
+import gz.dam.simondiceduo.ui.theme.SimonDiceDuoTheme
 
 class MainActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        enableEdgeToEdge()
         setContent {
-            SimonDiceTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    SimonDiceUI()
+            SimonDiceDuoTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Greeting(
+                        name = "Android",
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }
     }
+}
 
-    override fun onDestroy() {
-        super.onDestroy()
-        SoundPlayer.getInstance(this).release()
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    SimonDiceDuoTheme {
+        Greeting("Android")
     }
 }
