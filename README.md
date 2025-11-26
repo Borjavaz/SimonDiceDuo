@@ -96,3 +96,10 @@ main (protegida)
 └── development  
 ├── feature_Borja # Lógica y estados  
 └── featureManu # Interfaz y componentes  
+
+Ejemplos de ejecucion del codigo:
+
+<img width="406" height="849" alt="image" src="https://github.com/user-attachments/assets/3e791756-de80-4a58-8481-79252bf20ed7" />
+
+<img width="406" height="849" alt="image" src="https://github.com/user-attachments/assets/773192ca-51dc-4996-be46-23a2e575bca6" />
+
