@@ -62,4 +62,46 @@ fun SimonDiceUI(viewModel: VM = viewModel()) {
         BotonControl(viewModel, gameState)
     }
 }
+@Composable
+fun HeaderInfo(
+    ronda: Int,
+    record: Int,
+    text: String,
+    gameState: GameState
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Text(
+            text = "SIMÓN DICE",
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
 
+        Text(
+            text = text,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.SemiBold,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceAround
+        ) {
+            InfoBox("RONDA", ronda.toString())
+            InfoBox("RÉCORD", record.toString())
+            InfoBox("ESTADO", when (gameState) {
+                is GameState.Inicio -> "INICIO"
+                is GameState.Preparando -> "PREPARADO"
+                is GameState.MostrandoSecuencia -> "OBSERVA"
+                is GameState.EsperandoJugador -> "TU TURNO"
+                is GameState.ProcesandoInput -> "PROCESANDO"
+                is GameState.SecuenciaCorrecta -> "¡BIEN!"
+                is GameState.GameOver -> "GAME OVER"
+            })
+        }
+    }
+}
